@@ -589,9 +589,8 @@ While the RAG pipeline in the previous section is sufficient to demonstrate the 
 <!-- #endregion -->
 
 ```python editable=true slideshow={"slide_type": ""} tags=["video-app_demo-*"]
-from IPython.display import Video, display
-
-display(Video("./media/app_demo.mp4", width=1000))
+from IPython.display import VimeoVideo, display
+display(VimeoVideo('1163638412','100%','347'))
 ```
 
 <!-- #region editable=true slideshow={"slide_type": ""} -->
@@ -599,9 +598,8 @@ As you can see, the RAG app above remains focused on the real historical sources
 <!-- #endregion -->
 
 ```python editable=true slideshow={"slide_type": ""} tags=["video-debate_demo-*"]
-from IPython.display import Video, display
-
-display(Video("./media/debate_demo.mp4", width=1000))
+from IPython.display import VimeoVideo, display
+display(VimeoVideo('1163653933','100%','347'))
 ```
 
 <!-- #region editable=true slideshow={"slide_type": ""} -->
