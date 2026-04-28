@@ -77,7 +77,7 @@ In this article, we will share the findings of a year-long research project on e
 Why build a Retrieval Augmented Generation (RAG) system? RAG offers a profound advantage over traditional keyword search when it comes to tackling the source abundance problem by bridging the gap between rigid data retrieval and semantic understanding. As illustrated in the Source Document Ingestion phase in the diagram below, RAG does not simply index words; it uses an Embedding Model to convert the data, in this case our Presidential Speech Corpora, into multidimensional vectors stored in a Vector Database. This allows for semantic search, where the system identifies relevant historical context based on conceptual meaning rather than exact phrasing. Furthermore, while traditional word search engines leave the user to synthesise findings themselves, the LLM in this pipeline ingests the specific Retrieved Context to construct a coherent Generated Text Response. This transforms the research process from a manual "hunt-and-peck" through archives into a dynamic dialogue where the researcher can interrogate the primary sources directly using full 'human-language' questions, as opposed to the 'machine-language' of [regex](https://docs.python.org/3/library/re.html) or advanced keyword search methods.
 <!-- #endregion -->
 
-```python editable=true slideshow={"slide_type": ""} tags=["figure-rag_diagram-*"]
+```python editable=true slideshow={"slide_type": ""} tags=["figure-rag_diagram-*"] jdh={"module": "object", "object": {"source": ["Retrieval Augmented Generation (RAG) Pipeline"]}}
 from IPython.display import Image, display
 
 display(Image("./media/rag_diagram.jpg", width=1000))
@@ -321,7 +321,7 @@ if __name__ == "__main__":
 ```
 
 <!-- #region editable=true slideshow={"slide_type": ""} tags=["hermeneutics"] -->
-Once the vector database has been created and uploaded to Pinecone, it is possible to complete the RAG pipeline by querying the database using [an open-source LLM](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct) from Huggingface, and a simple Gradio UI. In this stage, the user's question is vectorised, using the same embedding model that was used to vectorise the dataset. The question vector is then compared to the other vectors in the database using 'cosine similarity', and the most similar database vectors are returned and re-translated into human language. These translated chunks and the original question are then passed to the LLM, which uses this accurate context to respond to the question. Results with smaller open-source LLMs hosted for free in Google Colab can vary (due to the constraints on the size of the model one can load). The chunk retrieval step on its own may be of interest to historians looking for a richer search experience, even without the LLM to synthesise a response. 
+Once the vector database has been created and uploaded to Pinecone, it is possible to complete the RAG pipeline by querying the database using [an open-source LLM](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct) from Huggingface, and a simple Gradio UI. In this stage, the user's question is vectorised, using the same embedding model that was used to vectorise the dataset. The question vector is then compared to the other vectors in the database using 'cosine similarity', and the most similar database vectors are returned and re-translated into human language. These translated chunks and the original question are then passed to the LLM, which uses this accurate context to respond to the question. Results with smaller open-source LLMs hosted for free in [Google Colab](https://colab.research.google.com/drive/1qt75iCTcnGSWwHY2GaszmRrJ3pze1aua?usp=sharing) can vary (due to the constraints on the size of the model one can load). The chunk retrieval step on its own may be of interest to historians looking for a richer search experience, even without the LLM to synthesise a response. 
 <!-- #endregion -->
 
 ```python editable=true slideshow={"slide_type": ""} tags=["hermeneutics"]
@@ -588,7 +588,7 @@ if __name__ == "__main__":
 While the RAG pipeline in the previous section is sufficient to demonstrate the principle, we were keen to push for even greater accuracy, interactivity, and above all, maintain a close emphasis on the actual sources to make verifiability as easy as possible. The clip below demonstrates the finished user interface, which we built as a Streamlit app (this is not currently available to the public). Notice how the researcher can switch between Presidents, constrain their answers by time period for more specific responses, and ask broad and open questions. Crucially, it is possible to move seamlessly from the generated output (which represents verbatim the underlying retrieved sources with about 98% fidelity), to the retrieved chunks, and finally the original speeches themselves as hosted on the American Presidency Project website. In this 'production' version, we used [Pinecone](https://www.pinecone.io/) for vector storage, [Voyage AI](https://www.voyageai.com/) for embedding and reranking models, [Anthropic's Claude Sonnet 4 model](https://www.anthropic.com/news/claude-4), and [Streamlit](https://streamlit.io/) for the user interface. At one stage, this tool also included automatic speech-to-text, using cloned versions of the president's voices, courtesy of [Elevenlabs](https://elevenlabs.io/). 
 <!-- #endregion -->
 
-```python editable=true slideshow={"slide_type": ""} tags=["video-app_demo-*"]
+```python editable=true slideshow={"slide_type": ""} tags=["video-app_demo-*"] jdh={"module": "object", "object": {"source": ["LABEL TO ADD"]}}
 from IPython.display import VimeoVideo, display
 display(VimeoVideo('1163638412','100%','347'))
 ```
@@ -597,7 +597,7 @@ display(VimeoVideo('1163638412','100%','347'))
 As you can see, the RAG app above remains focused on the real historical sources. While the LLM is a useful addition to facilitate something approaching a conversation with the archive, it does introduce an interpretive layer between the historian and their sources. It makes selections, omits some quotes, and chooses others. The reasons for these choices are inscrutable, which is potentially problematic. One could easily imagine this app retaining much of its utility without the LLM in the 'generation' phase. The embedding and result reranking models, and the semantic search in the 'retrieval' phase, contribute to the core value from the academic historian's perspective. Nevertheless, opportunities exist to harness LLMs to make history more interactive and encourage public participation. We aimed to highlight this potential by hosting an 'AI Presidential Debate', which received a large and diverse turnout. A clip from this debate can be viewed below.
 <!-- #endregion -->
 
-```python editable=true slideshow={"slide_type": ""} tags=["video-debate_demo-*"]
+```python editable=true slideshow={"slide_type": ""} tags=["video-debate_demo-*"] jdh={"module": "object", "object": {"source": ["LABEL TO ADD"]}}
 from IPython.display import VimeoVideo, display
 display(VimeoVideo('1163653933','100%','347'))
 ```
@@ -779,7 +779,7 @@ plt.xlim(0, df['step'].max())
 plt.show()
 ```
 
-```python editable=true slideshow={"slide_type": ""} tags=["figure-plot_training_loss-*"]
+```python editable=true slideshow={"slide_type": ""} tags=["figure-plot_training_loss-*"] jdh={"module": "object", "object": {"source": ["LABEL TO ADD"]}}
 from IPython.display import Image, display
 
 display(Image("./media/plot_training_loss.png", width=750))
@@ -919,7 +919,7 @@ plt.grid()
 plt.show()
 ```
 
-```python editable=true slideshow={"slide_type": ""} tags=["figure-function_word_frequency-*"]
+```python editable=true slideshow={"slide_type": ""} tags=["figure-function_word_frequency-*"] jdh={"module": "object", "object": {"source": ["Function Word Frequency Distribution"]}}
 from IPython.display import Image, display
 
 display(Image("./media/function_word_frequency.png", width=750))
